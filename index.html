@@ -1,130 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MediRide - Ambulance Booking</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-    body{background:#f5f9fc;color:#17212b}
-    header{background:#fff;padding:18px 8%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-    .logo{font-size:28px;font-weight:bold;color:#e63946}
-    nav a{text-decoration:none;color:#333;margin-left:25px;font-size:15px}
-    .emergency-btn{background:#e63946;color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold}
-    .hero{padding:70px 8%;display:flex;justify-content:space-between;align-items:center;gap:40px;background:linear-gradient(135deg,#fff1f2,#eef8ff)}
-    .hero-content{max-width:560px}
-    .hero h1{font-size:48px;line-height:1.15;margin-bottom:20px}
-    .hero h1 span{color:#e63946}
-    .hero p{font-size:18px;color:#5b6770;line-height:1.6;margin-bottom:28px}
-    .main-btn,.second-btn{display:inline-block;text-decoration:none;padding:15px 25px;border-radius:8px;font-weight:bold;margin-right:10px}
-    .main-btn{background:#e63946;color:#fff}
-    .second-btn{background:#fff;color:#e63946;border:1px solid #e63946}
-    .booking-card{background:#fff;padding:28px;border-radius:16px;width:360px;box-shadow:0 8px 30px rgba(0,0,0,.1)}
-    .booking-card h2{margin-bottom:20px;color:#222}
-    .booking-card input,.booking-card select{width:100%;padding:13px;margin-bottom:14px;border:1px solid #d5dce2;border-radius:7px;font-size:14px}
-    .booking-card button{width:100%;padding:14px;border:0;border-radius:7px;background:#e63946;color:#fff;font-size:16px;font-weight:bold;cursor:pointer}
-    .features{padding:50px 8%;text-align:center}
-    .features h2{font-size:30px;margin-bottom:30px}
-    .feature-container{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .feature-box{background:#fff;padding:25px 15px;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,.06)}
-    .feature-box .icon{font-size:35px;margin-bottom:12px}
-    .feature-box h3{margin-bottom:10px;font-size:18px}
-    .feature-box p{color:#68737d;font-size:14px;line-height:1.5}
-    footer{background:#17212b;color:#fff;text-align:center;padding:25px;margin-top:30px}
-    @media(max-width:900px){
-      .hero{flex-direction:column;text-align:center}
-      .booking-card{width:100%;max-width:400px}
-      .feature-container{grid-template-columns:repeat(2,1fr)}
-      nav{display:none}
-    }
-    @media(max-width:500px){
-      .hero h1{font-size:34px}
-      .hero p{font-size:16px}
-      .feature-container{grid-template-columns:1fr}
-      .main-btn,.second-btn{display:block;margin:10px 0}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRide Ambulance</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f7fafc; color: #2d3748; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); sticky; top: 0; z-index: 100; }
+        .logo { font-size: 22px; font-weight: bold; }
+        .logo-medi { color: #e53e3e; } /* MediRide का रंग लाल */
+        .logo-amb { color: #1a365d; }  /* Ambulance का रंग गहरा नीला */
+        .emergency-btn { background-color: #e53e3e; color: white; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; text-decoration: none; cursor: pointer; }
+        .hero { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #fff 0%, #edf2f7 100%); }
+        .hero h1 { font-size: 26px; color: #1a365d; margin-bottom: 12px; line-height: 1.4; }
+        .hero p { font-size: 16px; color: #4a5568; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+        .booking-container { max-width: 450px; margin: -20px auto 40px; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 15px rgba(0,0,0,0.1); position: relative; z-index: 10; width: 90%; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px; color: #4a5568; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 15px; }
+        .submit-btn { width: 100%; background-color: #319795; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .features { padding: 40px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .features h2 { font-size: 22px; color: #1a365d; margin-bottom: 25px; }
+        .feature-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 15px; text-align: left; display: flex; align-items: flex-start; gap: 15px; }
+        .feature-icon { font-size: 24px; }
+        .feature-text h3 { font-size: 16px; color: #2d3748; margin-bottom: 5px; }
+        .feature-text p { font-size: 14px; color: #718096; line-height: 1.4; }
+        footer { text-align: center; padding: 20px; background: #1a365d; color: white; font-size: 14px; margin-top: 40px; }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">MediRide</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#booking">Book Ambulance</a>
-      <a href="#features">Features</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="emergency-btn" href="tel:112">Emergency 112</a>
-  </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Reliable Ambulance,<br><span>When Every Second Matters</span></h1>
-      <p>Book verified ambulances with transparent pricing, quick response and reliable patient transportation.</p>
-      <a class="main-btn" href="#booking">Book Ambulance</a>
-      <a class="second-btn" href="#features">Explore Features</a>
-    </div>
+<header>
+    <div class="logo"><span class="logo-medi">MediRide</span> <span class="logo-amb">Ambulance</span></div>
+    <a href="tel:112" class="emergency-btn">Emergency 112</a>
+</header>
 
-    <div class="booking-card" id="booking">
-      <h2>Book an Ambulance</h2>
-      <form onsubmit="bookAmbulance(event)">
-        <input type="text" id="pickup" placeholder="Enter pickup location" required />
-        <input type="text" id="hospital" placeholder="Enter destination hospital" required />
-        <select id="ambulanceType" required>
-          <option value="">Select ambulance type</option>
-          <option>Basic Ambulance</option>
-          <option>Oxygen Ambulance</option>
-          <option>BLS Ambulance</option>
-          <option>ICU / ALS Ambulance</option>
-          <option>NICU Ambulance</option>
-          <option>Inter-City Ambulance</option>
-        </select>
-        <select id="patientCondition" required>
-          <option value="">Select patient condition</option>
-          <option>Stable Patient</option>
-          <option>Breathing Problem</option>
-          <option>Accident / Trauma</option>
-          <option>Critical Patient</option>
-          <option>Pregnancy Emergency</option>
-          <option>Newborn Baby</option>
-        </select>
-        <input type="tel" id="mobile" placeholder="Enter mobile number" required />
-        <button type="submit">Request Ambulance</button>
-      </form>
-    </div>
-  </section>
+<section class="hero">
+    <h1>आपातकालीन एम्बुलेंस सेवा<br>(Emergency Ambulance)</h1>
+    <p>सिर्फ एक क्लिक में अपने पास की एम्बुलेंस बुक करें। हर सेकंड कीमती है।</p>
+</section>
 
-  <section class="features" id="features">
+<div class="booking-container">
+    <form id="bookingForm" onsubmit="bookAmbulance(event)">
+        <div class="form-group">
+            <label for="pickup">Pickup Location</label>
+            <input type="text" id="pickup" placeholder="Enter pickup address" required>
+        </div>
+        <div class="form-group">
+            <label for="hospital">Dropoff Hospital</label>
+            <input type="text" id="hospital" placeholder="Enter hospital name" required>
+        </div>
+        <div class="form-group">
+            <label for="ambulanceType">Ambulance Type</label>
+            <select id="ambulanceType">
+                <option value="Basic Life Support (BLS)">Basic Life Support (BLS)</option>
+                <option value="Advanced Life Support (ALS)">Advanced Life Support (ALS)</option>
+                <option value="ICU Ambulance">ICU Ambulance</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="patientCondition">Patient Condition</label>
+            <input type="text" id="patientCondition" placeholder="e.g., Heart attack, Accident, Normal" required>
+        </div>
+        <button type="submit" class="submit-btn">Book Ambulance Now</button>
+    </form>
+</div>
+
+<section class="features">
     <h2>Why Choose MediRide?</h2>
-    <div class="feature-container">
-      <div class="feature-box"><div class="icon">🚑</div><h3>Verified Ambulances</h3><p>Ambulance partners and equipment will be verified before service.</p></div>
-      <div class="feature-box"><div class="icon">📍</div><h3>Live Tracking</h3><p>Track ambulance location and estimated arrival time.</p></div>
-      <div class="feature-box"><div class="icon">💰</div><h3>Clear Pricing</h3><p>See estimated fare and charge details before booking.</p></div>
-      <div class="feature-box"><div class="icon">📞</div><h3>24×7 Support</h3><p>Get emergency support and booking assistance whenever needed.</p></div>
+    <div class="feature-card">
+        <div class="feature-icon">🚑</div>
+        <div class="feature-text">
+            <h3>Verified Ambulances</h3>
+            <p>Ambulance partners and equipment will be verified before service.</p>
+        </div>
     </div>
-  </section>
+    <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <div class="feature-text">
+            <h3>Live Tracking</h3>
+            <p>Track ambulance location and estimated arrival time.</p>
+        </div>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <div class="feature-text">
+            <h3>Clear Pricing</h3>
+            <p>See estimated fare and charge details before booking.</p>
+        </div>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <div class="feature-text">
+            <h3>24x7 Support</h3>
+            <p>Get emergency support and booking assistance whenever needed.</p>
+        </div>
+    </div>
+</section>
 
-<!-- कस्टम पॉप-अप (नया वेरिफाइड निशान + पुराना डिज़ाइन) -->
+<!-- वेरिफाइड बैज और बोल्ड लाइन वाला कस्टम पॉप-अप -->
 <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; justify-content: center; align-items: center;">
     <div style="background: #ffffff; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        
-        <!-- आपकी पसंद का नया वेरिफाइड बैज निशान (SVG कोड) -->
         <div style="display: flex; justify-content: center; margin-bottom: 15px;">
             <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
                 <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM10 16.5L6 12.5L7.5 11L10 13.5L16.5 7L18 8.5L10 16.5Z" fill="#2ecc71"/>
             </svg>
         </div>
-        
         <div style="color: #27ae60; font-size: 20px; font-weight: bold; margin-bottom: 15px;">आपकी MediRide Ambulance बुक हो गई है।</div>
-        
-        <!-- आपका पुराना साधारण डिटेल्स बॉक्स (बिना किसी बदलाव के) -->
         <div id="modalDetails" style="text-align: left; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; line-height: 1.6;"></div>
-        
         <button style="background: #27ae60; color: white; border: none; padding: 10px 30px; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold;" onclick="closeModal()">OK</button>
     </div>
 </div>
 
-<footer id="contact">
+<footer>
     <p>© 2026 MediRide Ambulance. Your Emergency, Our Priority.</p>
 </footer>
 
@@ -137,14 +126,12 @@ function bookAmbulance(event) {
     const patientCondition = document.getElementById("patientCondition").value;
     const bookingId = "MR" + Math.floor(100000 + Math.random() * 900000);
 
-    // पुराना साधारण लिस्ट डिज़ाइन
     document.getElementById("modalDetails").innerHTML = 
         "<strong>Booking ID:</strong> " + bookingId + "<br>" +
         "<strong>Pickup:</strong> " + pickup + "<br>" +
         "<strong>Hospital:</strong> " + hospital + "<br>" +
         "<strong>Ambulance:</strong> " + ambulanceType + "<br>" +
         "<strong>Patient Condition:</strong> " + patientCondition + "<br><br>" +
-        // नीचे वाली लाइन बिल्कुल गाढ़ी (Bold) की गई है
         "<div style='text-align:center; color:#2c3e50; font-weight:bold;'>हमारी टीम जल्द ही आपसे संपर्क करेगी।</div>";
 
     document.getElementById("successModal").style.display = "flex";
