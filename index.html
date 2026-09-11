@@ -7,11 +7,13 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f7fafc; color: #2d3748; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 22px; font-weight: bold; }
-        .logo-medi { color: #e53e3e; } /* MediRide लाल रंग */
-        .logo-amb { color: #1a365d; }  /* Ambulance गहरा नीला रंग */
-        .emergency-btn { background-color: #e53e3e; color: white; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; text-decoration: none; cursor: pointer; }
+        
+        /* ऊपर का हेडर और नया सेंटर लोगो डिज़ाइन */
+        header { display: flex; justify-content: center; align-items: center; padding: 20px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; text-align: center; }
+        .logo { display: flex; flex-direction: column; align-items: center; line-height: 1.2; }
+        .logo-medi { font-size: 26px; font-weight: bold; color: #e53e3e; } /* MediRide लाल रंग */
+        .logo-amb { font-size: 16px; font-weight: bold; color: #1a365d; letter-spacing: 2px; margin-top: 2px; } /* Ambulance गहरा नीला रंग */
+        
         .hero { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #fff 0%, #edf2f7 100%); }
         .hero h1 { font-size: 26px; color: #1a365d; margin-bottom: 12px; line-height: 1.4; }
         .hero p { font-size: 16px; color: #4a5568; max-width: 600px; margin: 0 auto; line-height: 1.5; }
@@ -32,8 +34,11 @@
 <body>
 
 <header>
-    <div class="logo"><span class="logo-medi">MediRide</span> <span class="logo-amb">Ambulance</span></div>
-    <a href="tel:112" class="emergency-btn">Emergency 112</a>
+    <!-- ऊपर और नीचे दिखने वाला सेंटर लोगो -->
+    <div class="logo">
+        <span class="logo-medi">MediRide</span>
+        <span class="logo-amb">AMBULANCE</span>
+    </div>
 </header>
 
 <section class="hero">
@@ -52,7 +57,6 @@
             <input type="text" id="hospital" placeholder="Enter hospital name" required>
         </div>
         
-        <!-- 1. आपके फोटो के अनुसार बिल्कुल नई एम्बुलेंस लिस्ट -->
         <div class="form-group">
             <label for="ambulanceType">Ambulance Type</label>
             <select id="ambulanceType">
@@ -66,7 +70,6 @@
             </select>
         </div>
 
-        <!-- 2. आपके फोटो के अनुसार मरीज की कंडीशन लिस्ट -->
         <div class="form-group">
             <label for="patientCondition">Patient Condition</label>
             <select id="patientCondition">
