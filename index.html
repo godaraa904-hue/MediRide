@@ -7,10 +7,10 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f7fafc; color: #2d3748; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); sticky; top: 0; z-index: 100; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 22px; font-weight: bold; }
-        .logo-medi { color: #e53e3e; } /* MediRide का रंग लाल */
-        .logo-amb { color: #1a365d; }  /* Ambulance का रंग गहरा नीला */
+        .logo-medi { color: #e53e3e; } /* MediRide लाल रंग */
+        .logo-amb { color: #1a365d; }  /* Ambulance गहरा नीला रंग */
         .emergency-btn { background-color: #e53e3e; color: white; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; text-decoration: none; cursor: pointer; }
         .hero { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #fff 0%, #edf2f7 100%); }
         .hero h1 { font-size: 26px; color: #1a365d; margin-bottom: 12px; line-height: 1.4; }
@@ -18,7 +18,7 @@
         .booking-container { max-width: 450px; margin: -20px auto 40px; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 15px rgba(0,0,0,0.1); position: relative; z-index: 10; width: 90%; }
         .form-group { margin-bottom: 15px; text-align: left; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px; color: #4a5568; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 15px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 15px; background-color: white; }
         .submit-btn { width: 100%; background-color: #319795; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
         .features { padding: 40px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
         .features h2 { font-size: 22px; color: #1a365d; margin-bottom: 25px; }
@@ -51,18 +51,35 @@
             <label for="hospital">Dropoff Hospital</label>
             <input type="text" id="hospital" placeholder="Enter hospital name" required>
         </div>
+        
+        <!-- 1. आपके फोटो के अनुसार बिल्कुल नई एम्बुलेंस लिस्ट -->
         <div class="form-group">
             <label for="ambulanceType">Ambulance Type</label>
             <select id="ambulanceType">
-                <option value="Basic Life Support (BLS)">Basic Life Support (BLS)</option>
-                <option value="Advanced Life Support (ALS)">Advanced Life Support (ALS)</option>
-                <option value="ICU Ambulance">ICU Ambulance</option>
+                <option value="Select ambulance type">Select ambulance type</option>
+                <option value="Basic Ambulance">Basic Ambulance</option>
+                <option value="Oxygen Ambulance">Oxygen Ambulance</option>
+                <option value="BLS Ambulance">BLS Ambulance</option>
+                <option value="ICU / ALS Ambulance">ICU / ALS Ambulance</option>
+                <option value="NICU Ambulance">NICU Ambulance</option>
+                <option value="Inter-City Ambulance">Inter-City Ambulance</option>
             </select>
         </div>
+
+        <!-- 2. आपके फोटो के अनुसार मरीज की कंडीशन लिस्ट -->
         <div class="form-group">
             <label for="patientCondition">Patient Condition</label>
-            <input type="text" id="patientCondition" placeholder="e.g., Heart attack, Accident, Normal" required>
+            <select id="patientCondition">
+                <option value="Select patient condition">Select patient condition</option>
+                <option value="Stable Patient">Stable Patient</option>
+                <option value="Breathing Problem">Breathing Problem</option>
+                <option value="Accident / Trauma">Accident / Trauma</option>
+                <option value="Critical Patient">Critical Patient</option>
+                <option value="Pregnancy Emergency">Pregnancy Emergency</option>
+                <option value="Newborn Baby">Newborn Baby</option>
+            </select>
         </div>
+
         <button type="submit" class="submit-btn">Book Ambulance Now</button>
     </form>
 </div>
@@ -99,7 +116,7 @@
     </div>
 </section>
 
-<!-- वेरिफाइड बैज और बोल्ड लाइन वाला कस्टम पॉप-अप -->
+<!-- वेरिफाइड बैज (✅), पुराना साधारण डिटेल्स बॉक्स और गाढ़ी हिंदी लाइन वाला पॉप-अप -->
 <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; justify-content: center; align-items: center;">
     <div style="background: #ffffff; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
         <div style="display: flex; justify-content: center; margin-bottom: 15px;">
