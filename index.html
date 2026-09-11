@@ -104,29 +104,47 @@
     </div>
   </section>
 
-  <footer id="contact">
-    <p>© 2026 MediRide. Your Emergency, Our Priority.</p>
-  </footer>
+<!-- सुंदर कस्टम पॉप-अप का ढांचा -->
+<div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="background: #ffffff; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        <div style="font-size: 50px; color: #2ecc71; margin-bottom: 10px;">✅</div>
+        <div style="color: #27ae60; font-size: 20px; font-weight: bold; margin-bottom: 15px;">आपकी MediRide Ambulance बुक हो गई है।</div>
+        <div id="modalDetails" style="text-align: left; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; line-height: 1.6;"></div>
+        <button style="background: #27ae60; color: white; border: none; padding: 10px 30px; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold;" onclick="closeModal()">OK</button>
+    </div>
+</div>
 
-  <script>
-    function bookAmbulance(event) {
-      event.preventDefault();
-      const pickup = document.getElementById("pickup").value;
-      const hospital = document.getElementById("hospital").value;
-      const ambulanceType = document.getElementById("ambulanceType").value;
-      const patientCondition = document.getElementById("patientCondition").value;
-      const bookingId = "MR" + Math.floor(100000 + Math.random() * 900000);
+<footer id="contact">
+    <p>© 2026 MediRide Ambulance. Your Emergency, Our Priority.</p>
+</footer>
 
-      alert(
-        "आपकी MediRide Ambulance बुक हो गई है।\n\n" +
-        "Booking ID: " + bookingId + "\n" +
-        "Pickup: " + pickup + "\n" +
-        "Hospital: " + hospital + "\n" +
-        "Ambulance: " + ambulanceType + "\n" +
-        "Patient Condition: " + patientCondition + "\n\n" +
-        "हमारी टीम जल्द ही आपसे संपर्क करेगी।"
-    );
-    }
-  </script>
+<script>
+function bookAmbulance(event) {
+    event.preventDefault();
+    const pickup = document.getElementById("pickup").value;
+    const hospital = document.getElementById("hospital").value;
+    const ambulanceType = document.getElementById("ambulanceType").value;
+    const patientCondition = document.getElementById("patientCondition").value;
+    const bookingId = "MR" + Math.floor(100000 + Math.random() * 900000);
+
+    // पॉप-अप में जानकारी डालना
+    document.getElementById("modalDetails").innerHTML = 
+        "<strong>Booking ID:</strong> " + bookingId + "<br>" +
+        "<strong>Pickup:</strong> " + pickup + "<br>" +
+        "<strong>Hospital:</strong> " + hospital + "<br>" +
+        "<strong>Ambulance:</strong> " + ambulanceType + "<br>" +
+        "<strong>Patient Condition:</strong> " + patientCondition + "<br><br>" +
+        "<span style='color:#7f8c8d;'>हमारी टीम जल्द ही आपसे संपर्क करेगी।</span>";
+
+    // पॉप-अप को स्क्रीन पर दिखाना
+    document.getElementById("successModal").style.display = "flex";
+}
+
+function closeModal() {
+    // पॉप-अप बंद करना और फॉर्म को खाली करना
+    document.getElementById("successModal").style.display = "none";
+    document.getElementById("bookingForm").reset();
+}
+</script>
 </body>
 </html>
