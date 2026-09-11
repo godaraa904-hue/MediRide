@@ -104,12 +104,22 @@
     </div>
   </section>
 
-<!-- सुंदर कस्टम पॉप-अप का ढांचा -->
+<!-- कस्टम पॉप-अप (नया वेरिफाइड निशान + पुराना डिज़ाइन) -->
 <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; justify-content: center; align-items: center;">
     <div style="background: #ffffff; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <div style="font-size: 50px; color: #2ecc71; margin-bottom: 10px;">✅</div>
+        
+        <!-- आपकी पसंद का नया वेरिफाइड बैज निशान (SVG कोड) -->
+        <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM10 16.5L6 12.5L7.5 11L10 13.5L16.5 7L18 8.5L10 16.5Z" fill="#2ecc71"/>
+            </svg>
+        </div>
+        
         <div style="color: #27ae60; font-size: 20px; font-weight: bold; margin-bottom: 15px;">आपकी MediRide Ambulance बुक हो गई है।</div>
+        
+        <!-- आपका पुराना साधारण डिटेल्स बॉक्स (बिना किसी बदलाव के) -->
         <div id="modalDetails" style="text-align: left; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; line-height: 1.6;"></div>
+        
         <button style="background: #27ae60; color: white; border: none; padding: 10px 30px; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold;" onclick="closeModal()">OK</button>
     </div>
 </div>
@@ -127,21 +137,20 @@ function bookAmbulance(event) {
     const patientCondition = document.getElementById("patientCondition").value;
     const bookingId = "MR" + Math.floor(100000 + Math.random() * 900000);
 
-    // पॉप-अप में जानकारी डालना
+    // पुराना साधारण लिस्ट डिज़ाइन
     document.getElementById("modalDetails").innerHTML = 
         "<strong>Booking ID:</strong> " + bookingId + "<br>" +
         "<strong>Pickup:</strong> " + pickup + "<br>" +
         "<strong>Hospital:</strong> " + hospital + "<br>" +
         "<strong>Ambulance:</strong> " + ambulanceType + "<br>" +
         "<strong>Patient Condition:</strong> " + patientCondition + "<br><br>" +
-        "<span style='color:#7f8c8d;'>हमारी टीम जल्द ही आपसे संपर्क करेगी।</span>";
+        // नीचे वाली लाइन बिल्कुल गाढ़ी (Bold) की गई है
+        "<div style='text-align:center; color:#2c3e50; font-weight:bold;'>हमारी टीम जल्द ही आपसे संपर्क करेगी।</div>";
 
-    // पॉप-अप को स्क्रीन पर दिखाना
     document.getElementById("successModal").style.display = "flex";
 }
 
 function closeModal() {
-    // पॉप-अप बंद करना और फॉर्म को खाली करना
     document.getElementById("successModal").style.display = "none";
     document.getElementById("bookingForm").reset();
 }
